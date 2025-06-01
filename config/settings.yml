@@ -1,23 +1,46 @@
 plugins:
-  discourse_another_email_enabled:
+  override_smtp_enabled:
     default: false
-  discourse_another_email_enabling_mails:
-    default: "outlook.com"
-    type: list
-  discourse_another_email_maillist_allowing_emails:
-    default: "admin@example.com"
-    type: list
-  discourse_another_email_smtp_authentication_mode: 
-    default: "plain"
-  discourse_another_email_smtp_address:
-    default: "172.17.0.1"
-  discourse_another_email_smtp_port:
+  override_smtp_address:
+    default: "smtp.gmail.com"
+  override_smtp_port:
     default: 587
     min: 0
     max: 65537
-  discourse_another_email_smtp_username:
-    default: "username@example.com"
-  discourse_another_email_smtp_password:
+  override_smtp_domain:
+    default: "devn.cloud"
+  override_smtp_username:
+    default: "theaux@devn.cloud"
+  override_smtp_password:
     default: "password"
     secret: true
-  
+  override_smtp_authentication_mode: 
+    default: "plain"
+  override_smtp_enable_starttls: 
+    default: "plain"
+  override_smtp_enable_starttls_auto: 
+    default: "plain"   
+  override_smtp_openssl_verify_mode: 
+    default: "plain"
+  override_smtp_ssl: 
+    default: "plain"
+  override_smtp_tls: 
+    default: "plain"
+  override_smtp_open_timeout: 
+    default: "plain"
+  override_smtp_read_timeout: 
+    default: "plain"
+ 
+  # message.delivery_method.settings[:address] = SiteSetting.override_smtp_address
+  # message.delivery_method.settings[:port] = SiteSetting.override_smtp_port
+  # message.delivery_method.settings[:domain] = SiteSetting.override_smtp_domain
+  # message.delivery_method.settings[:user_name] = SiteSetting.override_smtp_username
+  # message.delivery_method.settings[:password] = SiteSetting.override_smtp_password
+  # message.delivery_method.settings[:authentication] = SiteSetting.override_smtp_authentication_mode
+  # message.delivery_method.settings[:enable_starttls] = SiteSetting.override_smtp_enable_starttls
+  # message.delivery_method.settings[:enable_starttls_auto] = SiteSetting.override_smtp_enable_starttls_auto
+  # message.delivery_method.settings[:openssl_verify_mode] = SiteSetting.override_smtp_openssl_verify_mode
+  # message.delivery_method.settings[:ssl] = SiteSetting.override_smtp_ssl
+  # message.delivery_method.settings[:tls] = SiteSetting.override_smtp_tls
+  # message.delivery_method.settings[:open_timeout] = SiteSetting.override_smtp_open_timeout
+  # message.delivery_method.settings[:read_timeout] = SiteSetting.override_smtp_read_timeout
