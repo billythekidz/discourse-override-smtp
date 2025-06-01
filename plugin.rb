@@ -19,39 +19,39 @@ after_initialize do
 
       message.delivery_method.settings[:address] = SiteSetting.override_smtp_address
       message.delivery_method.settings[:port] = SiteSetting.override_smtp_port
-      message.delivery_method.settings[:domain] = SiteSetting.override_smtp_
+      message.delivery_method.settings[:domain] = SiteSetting.override_smtp_domain
       message.delivery_method.settings[:user_name] = SiteSetting.override_smtp_username
       message.delivery_method.settings[:password] = SiteSetting.override_smtp_password
       message.delivery_method.settings[:authentication] = SiteSetting.override_smtp_authentication_mode
-      message.delivery_method.settings[:enable_starttls] = SiteSetting.override_smtp_
-      message.delivery_method.settings[:enable_starttls_auto] = SiteSetting.override_smtp_
-      message.delivery_method.settings[:openssl_verify_mode] = SiteSetting.override_smtp_
-      message.delivery_method.settings[:ssl] = SiteSetting.override_smtp_
-      message.delivery_method.settings[:tls] = SiteSetting.override_smtp_
-      message.delivery_method.settings[:open_timeout] = SiteSetting.override_smtp_
-      message.delivery_method.settings[:read_timeout] = SiteSetting.override_smtp_
+      message.delivery_method.settings[:enable_starttls] = SiteSetting.override_smtp_enable_starttls
+      message.delivery_method.settings[:enable_starttls_auto] = SiteSetting.override_smtp_enable_starttls_auto
+      message.delivery_method.settings[:openssl_verify_mode] = SiteSetting.override_smtp_openssl_verify_mode
+      message.delivery_method.settings[:ssl] = SiteSetting.override_smtp_ssl
+      message.delivery_method.settings[:tls] = SiteSetting.override_smtp_tls
+      message.delivery_method.settings[:open_timeout] = SiteSetting.override_smtp_open_timeout
+      message.delivery_method.settings[:read_timeout] = SiteSetting.override_smtp_read_timeout
       
     end
    
   end
       
-  
 end
 
+# override_smtp_enabled
 # message.delivery_method.settings is like:
 # {:address=>"localhost",
 #  :port=>1025,
 #  :domain=>"localhost.localdomain",
-#  :user_name=>nil,
-#  :password=>nil,
-#  :authentication=>nil,
-#  :enable_starttls=>nil,
-#  :enable_starttls_auto=>true,
-#  :openssl_verify_mode=>nil,
-#  :ssl=>nil,
-#  :tls=>nil,
+#  :user_name=>,
+#  :password=>,
+#  :authentication=plain>,
+#  :enable_starttls=>true,
+#  :enable_starttls_auto=>false,
+#  :openssl_verify_mode=>none,
+#  :ssl=>,
+#  :tls=>,
 #  :open_timeout=>5,
-#  :read_timeout=>5,
+#  :read_timeout=>30,
 #  :return_response=>true}
 
 # address of smtp server used to send emails
