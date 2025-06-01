@@ -1,43 +1,38 @@
 # frozen_string_literal: true
 
-# name: discourse-another-smtp
-# about: Another smtp server for emails that banned my main-smtp
+# name: discourse-override-smtp
+# about: Override smtp server email
 # version: 0.0.1
-# authors: Lhc_fl
-# url: https://github.com/Lhcfl/discourse-another-smtp
+# authors: Billy
+# url: https://github.com/billykidz/discourse-override-smtp
 # required_version: 3.0.0
 
-enabled_site_setting :discourse_another_email_enabled
+enabled_site_setting :override_smtp_enabled
 
 after_initialize do
   
   DiscourseEvent.on(:before_email_send) do |*params|
 
-    if SiteSetting.discourse_another_email_enabled
+    if SiteSetting.override_smtp_enabled
   
       message, type = *params
 
-      receiver_in_list = false
-      allow_maillist = false
+      message.delivery_method.settings[:address] = SiteSetting.override_smtp_address
+      message.delivery_method.settings[:port] = SiteSetting.override_smtp_port
+      message.delivery_method.settings[:domain] = SiteSetting.override_smtp_
+      message.delivery_method.settings[:user_name] = SiteSetting.override_smtp_username
+      message.delivery_method.settings[:password] = SiteSetting.override_smtp_password
+      message.delivery_method.settings[:authentication] = SiteSetting.override_smtp_authentication_mode
+      message.delivery_method.settings[:enable_starttls] = SiteSetting.override_smtp_
+      message.delivery_method.settings[:enable_starttls_auto] = SiteSetting.override_smtp_
+      message.delivery_method.settings[:openssl_verify_mode] = SiteSetting.override_smtp_
+      message.delivery_method.settings[:ssl] = SiteSetting.override_smtp_
+      message.delivery_method.settings[:tls] = SiteSetting.override_smtp_
+      message.delivery_method.settings[:open_timeout] = SiteSetting.override_smtp_
+      message.delivery_method.settings[:read_timeout] = SiteSetting.override_smtp_
       
-      message&.to&.each do |address|
-        SiteSetting.discourse_another_email_enabling_mails.split('|').each do |addr|
-          receiver_in_list = true if address.include? addr
-        end
-        SiteSetting.discourse_another_email_maillist_allowing_emails.split('|').each do |addr|
-          allow_maillist = true if address.include? addr
-        end
-      end
-
-      if receiver_in_list and (type != :mailing_list or allow_maillist)
-        message.delivery_method.settings[:authentication] = SiteSetting.discourse_another_email_smtp_authentication_mode
-        message.delivery_method.settings[:address] = SiteSetting.discourse_another_email_smtp_address
-        message.delivery_method.settings[:port] = SiteSetting.discourse_another_email_smtp_port
-        message.delivery_method.settings[:password] = SiteSetting.discourse_another_email_smtp_password
-        message.delivery_method.settings[:user_name] = SiteSetting.discourse_another_email_smtp_username
-      end
     end
-  
+   
   end
       
   
@@ -58,3 +53,33 @@ end
 #  :open_timeout=>5,
 #  :read_timeout=>5,
 #  :return_response=>true}
+
+# address of smtp server used to send emails
+#smtp_address =
+# port of smtp server used to send emails
+#smtp_port = 25
+# domain passed to smtp server
+#smtp_domain =
+# username for smtp server
+#smtp_user_name =
+# password for smtp server
+#smtp_password =
+# smtp authentication mechanism
+#smtp_authentication = plain
+# enable TLS encryption for smtp connections
+#smtp_enable_start_tls = true
+# mode for verifying smtp server certificates
+# to disable, set to 'none'
+#smtp_openssl_verify_mode =
+# force implicit TLS as per RFC 8314 3.3
+#smtp_force_tls = false
+# number of seconds to wait while attempting to open a SMTP connection
+#smtp_open_timeout = 5
+# Number of seconds to wait until timing-out a SMTP read(2) call
+#smtp_read_timeout = 30
+# number of seconds to wait while attempting to open a SMTP connection only when
+# sending emails via group SMTP
+#group_smtp_open_timeout = 30
+# Number of seconds to wait until timing-out a SMTP read(2) call only when sending
+# emails via group SMTP
+#group_smtp_read_timeout = 60
