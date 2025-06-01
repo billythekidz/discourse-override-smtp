@@ -1,6 +1,6 @@
 en:
   site_settings:
-    override_stmp_enable: "enable"
+    override_stmp_enabled: "enable"
     override_smtp_address: "address"
     override_smtp_port: "port"
     override_smtp_domain: "domain"
