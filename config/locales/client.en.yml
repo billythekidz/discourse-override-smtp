@@ -8,7 +8,7 @@ en:
     override_smtp_password: "password"
     override_smtp_authentication_mode: "authentication"
     override_smtp_enable_starttls: "enable_starttls"
-    override_smtp_enable_starttls_auto: "enable_starttls_auto"
+    override_smtp_enable_starttls_auto: "enable_starttls_force"
     override_smtp_openssl_verify_mode: "openssl_verify_mode"
     override_smtp_ssl: "ssl"
     override_smtp_tls: "tls"
