@@ -23,9 +23,9 @@ plugins:
   override_smtp_openssl_verify_mode: 
     default: "none"
   override_smtp_ssl: 
-    default: 
+    default: ""
   override_smtp_tls: 
-    default: 
+    default: ""
   override_smtp_open_timeout: 
     default: 5
   override_smtp_read_timeout: 
